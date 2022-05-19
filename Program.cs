@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using BankApplication;
+
+var account = new BankAccount("Arul", 5000m);
+
+Console.WriteLine($"Acoount no: {account.accontNumber}\nname: {account.name}\nBalance: {account.balance}");
