@@ -47,4 +47,17 @@ public class BankAccount
         var withdrawal = new Transaction(-amount, date, note);
         allTransactions.Add(withdrawal);
     }
+
+    public string GetAccountBalance(){
+        var report = new System.Text.StringBuilder();
+        decimal balance = 0;
+
+        report.AppendLine("Date\t\tAmount\tBalance\t\tNote");
+
+        foreach(var transaction in allTransactions){
+            balance += transaction.amount;
+            report.AppendLine($"{transaction.date.ToShortDateString()}\t{transaction.amount}\t{balance}\t\t{transaction.note}");
+        }
+        return report.ToString();
+    }
 }
