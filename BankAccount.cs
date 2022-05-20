@@ -48,7 +48,7 @@ public class BankAccount
         allTransactions.Add(withdrawal);
     }
 
-    public string GetAccountBalance(){
+    public string GetAccountStatement(){
         var report = new System.Text.StringBuilder();
         decimal balance = 0;
 
@@ -61,5 +61,5 @@ public class BankAccount
         return report.ToString();
     }
 
-    public virtual void PerfomeMonthEndTransactions() { }
+    public virtual void PerformMonthEndTransactions() { }
 }
