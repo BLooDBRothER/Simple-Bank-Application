@@ -1,7 +1,7 @@
 using BankApplication;
 
 public class LineOfCreditAccount : BankAccount{
-    public LineOfCreditAccount(string name, decimal amount) : base(name, amount){}
+    public LineOfCreditAccount(string name, decimal amount, decimal creditLimit) : base(name, amount, -creditLimit){}
 
     public override void PerformMonthEndTransactions()
     {
@@ -10,4 +10,9 @@ public class LineOfCreditAccount : BankAccount{
             MakeWithdrawal(charge, DateTime.Now, "Charege Monthly Interest");
         }
     }
+
+    protected override Transaction? CheckWithdrawalLimit(bool isOverdrawn) =>
+        isOverdrawn
+        ? new Transaction(-20, DateTime.Now, "Apply overdraft fee")
+        : default;
 }
